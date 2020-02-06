@@ -1,0 +1,2 @@
+#!/bin/sh
+npx browser-sync start --server --files "*.*" --no-notify
