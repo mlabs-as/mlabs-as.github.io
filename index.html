@@ -3,10 +3,239 @@
   <head>
     <title></title>
     <meta charset="utf-8" />
+    <script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script>
-    </script>
+
   </head>
   <body>
+    <section id="first">
+      <logo>
+        <img src="img/logo.svg">
+      </logo>
+      <contact>
+        <a href="#">Ta kontakt</a>
+      </contact>
+      <navhint>
+        <img src="img/arrow_down.svg">
+      </navhint>
+      <nav>
+        <ul>
+          <li>
+            <a href="#">
+              <span>Folkene</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>Prosjekter</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span>Vi gjør</span>
+            </a>
+            <ul class="dropdown">
+              <li>
+                <a href="#research">
+                  <img src="img/research.svg">
+                  <span>Research</span>
+                </a>
+              </li>
+              <li>
+                <a href="#creative">
+                  <img src="img/creative.svg">
+                  <span>Kreativitet</span>
+                </a>
+              </li>
+              <li>
+                <a href="#design">
+                  <img src="img/design.svg">
+                  <span>Design</span>
+                </a>
+              </li>
+              <li>
+                <a href="#development">
+                  <img src="img/development.svg">
+                  <span>Utvikling</span>
+                </a>
+              </li>
+              <li>
+                <a href="#movie">
+                  <img src="img/movie.svg">
+                  <span>Foto/Film</span>
+                </a>
+              </li>
+          </li>
+            </ul>
+      </nav>
+
+      <header>
+        <h1 style="display: block">&lt;Designdrevet</h1>
+        <h1>&nbsp;&nbsp;Utvikling/&gt;</h1>
+      </header>
+      <article>
+        <p>
+          M'Labs spesialiserer seg på konseptualisering<br>og visualisering av ditt digitale product |
+        </p>
+      </article>
+
+      <header>
+        <h1>&lt;Research/&gt;</h1>
+      </header>
+      <article>
+        <img src="img/research.svg">
+        <p>
+          Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom.
+        </p>
+      </article>
+
+      <header>
+        <h1>&lt;Kreativitet/&gt;</h1>
+      </header>
+      <article>
+        <img src="img/creative.svg">
+        <p>
+          Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom.
+        </p>
+      </article>
+
+      <header>
+        <h1>&lt;Design/&gt;</h1>
+      </header>
+      <article>
+        <img src="img/design.svg">
+        <p>
+          Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom.
+        </p>
+      </article>
+
+      <header>
+        <h1>&lt;Utvikling/&gt;</h1>
+      </header>
+      <article>
+        <img src="img/development.svg">
+        <p>
+          Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom.
+        </p>
+      </article>
+
+      <header>
+        <h1>&lt;Foto/Film/&gt;</h1>
+      </header>
+      <article>
+        <img src="img/movie.svg">
+        <p>
+          Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom der ideen din kan plukkes fra hverandre og sett fra ulike vinkler. Gjennom en serie workshops ønsker vi å lage et rom.
+        </p>
+      </article>
+    </section>
+    <section id="second">
+      <iframe src="https://www.youtube.com/embed/oytL881p-nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+    <section id="third" >
+      Section 3
+    </section>
+    <script>
+     const pageMapping = {
+       '#research': 1,
+       '#creative': 2,
+       '#design': 3,
+       '#development': 4,
+       '#movie': 5,
+     }
+
+     const urlPage = pageMapping[window.location.hash] || 0
+
+     const {styler, spring, value, transform, stagger} = popmotion
+
+     const offsets = [0, 100, 200, 300, 400, 500]
+     const headers = Array.from(document.querySelectorAll('#first header'))
+     const paragraphs = document.querySelectorAll('#first article')
+
+     const setters = offsets.map((offset, i) => {
+       return [
+         value({x: `${offset}vw`}, styler(headers[i]).set),
+         value({x: `${offset}vw`}, styler(paragraphs[i]).set),
+       ]
+     })
+
+     function show(pageIndex) {
+       const config = {
+         // Stiffness of the spring. Higher values will create more sudden movement. (default: 100)
+         stiffness: 120,
+         // Strength of opposing force. If set to 0, spring will oscillate indefinitely. (default: 10)
+         damping: 20,
+         // Mass of the moving object. Higher values will result in more lethargic movement. (default: 1)
+         mass: 1,
+         // Initial velocity of the object, measured in units per second. (default: 0)
+         velocity: 0,
+         // End animation if distance to `to` is below this value and speed is below `restSpeed`.
+         // When animation ends, spring gets “snapped” to `to`. (default: 0.01)
+         restDelta: 0.01,
+         // End animation if absolute speed (in units per second) drops below this value and
+         // delta is smaller than `restDelta`. (default: 0.01)
+         restSpeed: 0.01,
+       }
+
+       setters.forEach(([header, para], i) => {
+         const animations = [
+           spring({
+             ...config,
+             from: header.get(),
+             to: { x: offsets[i] - pageIndex * 100 + 'vw' },
+           }),
+           spring({
+             ...config,
+             from: para.get(),
+             to: { x: offsets[i] - pageIndex * 100 + 'vw' },
+           })
+         ]
+         stagger(animations, 50)
+           .start( ([h, p]) => {
+             h && header.update(h)
+             p && para.update(p)
+           })
+       })
+     }
+    </script>
+    <script>
+     let isScrolling = null
+     let scrollTrigger
+     window.addEventListener('scroll', event => {
+       window.clearTimeout( scrollTrigger )
+       scrollTrigger = setTimeout(() => {
+         if(isScrolling) {
+           if(window.scrollY === isScrolling) {
+             isScrolling = null
+           }
+           return
+         }
+
+         const middle = window.innerHeight / 2.0
+         const target = window.scrollY + middle
+         const sections = Array.from(document.querySelectorAll('section'))
+
+         const elemMiddle = a => a.offsetTop + a.offsetHeight / 2.0
+         const closest = sections.reduce((a, b) =>
+           Math.abs(target - elemMiddle(a)) < Math.abs(target - elemMiddle(b)) ? a : b
+         )
+
+         window.scrollTo({
+           top: closest.offsetTop,
+           behavior: 'smooth',
+         })
+       }, 50)
+     })
+
+    </script>
+    <script>
+     function pageFromUrl() {
+       const page = pageMapping[window.location.hash] || 0;
+       show(page)
+     }
+     window.onhashchange = pageFromUrl
+     // TODO: dont animate on initial render
+     pageFromUrl()
+    </script>
   </body>
 </html>
