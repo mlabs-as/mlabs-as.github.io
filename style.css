@@ -14,8 +14,42 @@ body {
 }
 section {
   min-height: 100vh;
+  position: relative;
   width: 100vw;
   overflow: hidden;
+}
+
+/* TAG: FIXED ELEMS */
+logo {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+logo > img {
+  height: 4rem;
+}
+
+contact {
+  position: absolute;
+  left: 3rem;
+  bottom: 2rem;
+}
+contact > a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: normal;
+  color: black;
+}
+
+navhint {
+  position: absolute;
+  z-index: 200;
+  right: 3rem;
+  bottom: 2rem;
+}
+
+navhint > img {
+  height: 5rem;
 }
 
 /* TAG: CARD GRID */
@@ -128,42 +162,6 @@ section#about article > img {
   left: -12rem;
   height: 8rem;
 }
-
-
-
-logo {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-}
-logo > img {
-  height: 4rem;
-}
-
-contact {
-  position: absolute;
-  left: 3rem;
-  bottom: 2rem;
-}
-contact > a {
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: normal;
-  color: black;
-}
-
-navhint {
-  position: absolute;
-  z-index: 200;
-  right: 3rem;
-  bottom: 2rem;
-}
-
-navhint > img {
-  height: 5rem;
-}
-
-
 
 /* TAG: FIRST SECTION NAVBAR */
 nav ul {
