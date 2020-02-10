@@ -93,34 +93,40 @@ function sectionsShowing() {
 }
 
 let isScrolling = null
+function snapToSection() {
+  console.log('snapToSection')
+  if(isScrolling) {
+    if(window.scrollY === isScrolling) {
+      isScrolling = null
+    }
+    return
+  }
+
+  const {height} = currentBounds()
+  const [first, second] = sectionsShowing()
+
+  // Two sections currently showing
+  if (second) {
+    const arg = first.portion > second.portion ? {
+      // Bottom of first elem (could be larger than vh)
+      top: first.elem.offsetTop + first.elem.offsetHeight - height,
+      behavior: 'smooth',
+    } :{
+      top: second.elem.offsetTop,
+      behavior: 'smooth',
+    }
+    window.scrollTo(arg)
+  }
+}
+
+window.addEventListener('resize', snapToSection)
+
 let scrollTrigger
 window.addEventListener('scroll', event => {
   window.clearTimeout( scrollTrigger )
-  scrollTrigger = setTimeout(() => {
-    if(isScrolling) {
-      if(window.scrollY === isScrolling) {
-        isScrolling = null
-      }
-      return
-    }
-
-    const {height} = currentBounds()
-    const [first, second] = sectionsShowing()
-
-    // Two sections currently showing
-    if (second) {
-      const arg = first.portion > second.portion ? {
-        // Bottom of first elem (could be larger than vh)
-        top: first.elem.offsetTop + first.elem.offsetHeight - height,
-        behavior: 'smooth',
-      } :{
-        top: second.elem.offsetTop,
-        behavior: 'smooth',
-      }
-      window.scrollTo(arg)
-    }
-  }, 50)
+  scrollTrigger = setTimeout(snapToSection, 50)
 })
+
 function pageFromUrl() {
   const page = pageMapping[window.location.hash] || 0
   show(page)
