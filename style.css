@@ -194,16 +194,21 @@ ul.dropdown:hover {
 /* TAG: SECOND SECTION (VIDEO) */
 section#fullscreenvideo {
   position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  overflow:hidden;
   background-color: black;
 }
-section#fullscreenvideo iframe {
+
+section#fullscreenvideo iframe,
+section#fullscreenvideo object,
+section#fullscreenvideo embed {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
-
 /* TAG: THIRD SECTION (CREW) */
 section#crew {
   background-color: white;
