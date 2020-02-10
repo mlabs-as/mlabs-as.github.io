@@ -64,10 +64,10 @@ section#about article > img {
 logo {
   position: absolute;
   top: 2rem;
-  left: 3rem;
+  left: 2rem;
 }
 logo > img {
-  height: 5rem;
+  height: 4rem;
 }
 
 contact {
@@ -187,26 +187,26 @@ ul.dropdown:hover {
 
 /* TAG: SECOND SECTION (VIDEO) */
 section#second {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   background-color: black;
 }
 section#second iframe {
-  height: 90%;
-  width: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 /* TAG: THIRD SECTION (CREW) */
 section#crew {
   background-color: white;
-  margin: 0 auto;
 }
 
 section#crew > header {
   padding-top: 8rem;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.7fr 2fr;
   grid-gap: 4rem;
 }
 
@@ -217,20 +217,26 @@ section#crew > header > h1 {
   font-weight: lighter;
 }
 section#crew > header > p {
-  width: 400px;
+  max-width: 400px;
+  line-height: 1.7rem;
 }
 
 section#crew people {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5%;
+  margin: 5rem 0;
+}
+
+section#crew person:nth-child(odd) {
+  justify-self: end;
 }
 
 section#crew person {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 35%;
-  height: 25vh;
+  width: 80%;
 }
 
 section#crew person > fader {
@@ -266,13 +272,11 @@ section#crew person > fader > detail:hover {
 }
 
 section#crew person:nth-child(odd) {
-  margin-top: 5vh;
 }
 section#crew person:nth-child(even) {
-  margin-top: 20vh;
+  margin-top: 25%;
 }
 section#crew person:last-child {
-  margin-bottom: 20vh;
 }
 
 
