@@ -95,7 +95,6 @@ function sectionsShowing() {
 
 let isScrolling = null
 function snapToSection() {
-  console.log('snapToSection')
   if(isScrolling) {
     if(window.scrollY === isScrolling) {
       isScrolling = null
