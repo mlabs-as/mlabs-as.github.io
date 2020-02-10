@@ -26,7 +26,7 @@
             </a>
           </li>
           <li>
-            <a href="#project">
+            <a href="#projects">
               <span>Prosjekter</span>
             </a>
           </li>
@@ -130,7 +130,7 @@
       </article>
     </section>
 
-    <section id="second">
+    <section id="fullscreenvideo">
       <iframe src="https://www.youtube.com/embed/oytL881p-nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
 
@@ -232,6 +232,10 @@
         </person>
     </section>
 
+    <section id="projects">
+      <h1>Projects TODO</h1>
+    </section>
+
     <section id="contact" >
       <header>
         <h1>Fristet til innovasjon?</h1>
@@ -317,6 +321,23 @@
      }
     </script>
     <script>
+     function currentlyShowingSections() {
+       const sectionBounds = Array.from(document.querySelectorAll('section'))
+                                  .map(s => [s.offsetTop, s.offsetTop + s.offsetHeight])
+
+       const {innerHeight, scrollY} = window
+       const currentBounds = [scrollY, scrollY + innerHeight]
+
+       return sectionBounds.reduce((n, [lower, upper]) => {
+         const [start, end] = currentBounds;
+
+         if (end <= lower || upper <= start) {
+           return n
+         }
+         return n+1
+       }, 0)
+     }
+
      let isScrolling = null
      let scrollTrigger
      window.addEventListener('scroll', event => {
@@ -329,26 +350,28 @@
            return
          }
 
-         const middle = window.innerHeight / 2.0
-         const target = window.scrollY + middle
+         const target = window.scrollY
          const sections = Array.from(document.querySelectorAll('section'))
-
-         const elemMiddle = a => a.offsetTop + a.offsetHeight / 2.0
          const closest = sections.reduce((a, b) =>
-           Math.abs(target - elemMiddle(a)) < Math.abs(target - elemMiddle(b)) ? a : b
+           Math.abs(target - a.offsetTop) < Math.abs(target - b.offsetTop) ? a : b
          )
 
-         /* window.scrollTo({
-          *   top: closest.offsetTop,
-          *   behavior: 'smooth',
-          * })
-            }, 50) */
-       })
+//         window.location.hash = closest.id
+         if (currentlyShowingSections() > 1) {
+           console.log('scrolling to', closest.id)
+           window.scrollTo({
+             top: closest.offsetTop,
+             behavior: 'smooth',
+           })
+         }
+       }, 50)
+     })
 
     </script>
     <script>
      function pageFromUrl() {
-       const page = pageMapping[window.location.hash] || 0;
+       console.log('hashChange!')
+       const page = pageMapping[window.location.hash] || 0
        show(page)
      }
      window.onhashchange = pageFromUrl

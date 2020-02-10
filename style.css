@@ -186,11 +186,11 @@ ul.dropdown:hover {
 }
 
 /* TAG: SECOND SECTION (VIDEO) */
-section#second {
+section#fullscreenvideo {
   position: relative;
   background-color: black;
 }
-section#second iframe {
+section#fullscreenvideo iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -294,7 +294,15 @@ section#crew person > span {
 }
 
 
-/* TAG: FOURTH SECTION (CONTACT) */
+/* TAG: FOURTH SECTION (PROJECTS) */
+section#projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6666bb;
+}
+
+/* TAG: FIFTH SECTION (CONTACT) */
 section#contact {
   background-color: #efd4a9;
   display: flex;
