@@ -39,6 +39,7 @@ contact > a {
   text-decoration: none;
   font-weight: normal;
   color: black;
+  cursor: pointer;
 }
 
 navhint {

@@ -1,4 +1,5 @@
 const pageMapping = {
+  '#about': 0,
   '#research': 1,
   '#creative': 2,
   '#design': 3,
@@ -109,13 +110,18 @@ function snapToSection() {
   if (second) {
     const arg = first.portion > second.portion ? {
       // Bottom of first elem (could be larger than vh)
+      ...first,
       top: first.elem.offsetTop + first.elem.offsetHeight - height,
       behavior: 'smooth',
     } :{
+      ...second,
       top: second.elem.offsetTop,
       behavior: 'smooth',
     }
     window.scrollTo(arg)
+    if(history.pushState) {
+      history.pushState(null, null, `#${arg.elem.id}`)
+    }
   }
 }
 
@@ -128,9 +134,37 @@ window.addEventListener('scroll', event => {
 })
 
 function pageFromUrl() {
-  const page = pageMapping[window.location.hash] || 0
-  show(page)
+  const page = pageMapping[window.location.hash]
+  if(page || page === 0) {
+    show(page)
+  }
 }
+
+function expandProjectCard() {
+  const cards = document.querySelectorAll('#projects card')
+  cards.forEach(c => c.classList.remove('collapsed'))
+  document.querySelector('svg#expand').classList.add('active')
+  document.querySelector('svg#collapse').classList.remove('active')
+}
+function collapseProjectCard() {
+  const cards = document.querySelectorAll('#projects card')
+  cards.forEach(c => c.classList.add('collapsed'))
+  document.querySelector('svg#expand').classList.remove('active')
+  document.querySelector('svg#collapse').classList.add('active')
+}
+function smoothScroll(anchor) {
+  const element = document.querySelector(anchor)
+  if(element) {
+    window.scrollTo({
+      top: element.offsetTop,
+      behavior: 'smooth',
+    })
+  }
+  if(history.pushState) {
+    history.pushState(null, null, anchor)
+  }
+}
+
+
 window.onhashchange = pageFromUrl
-// TODO: dont animate on initial render
 pageFromUrl()

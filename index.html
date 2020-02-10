@@ -13,7 +13,7 @@
         <img src="img/logo.svg">
       </logo>
       <contact>
-        <a href="#contact">Ta kontakt</a>
+        <a onclick="smoothScroll('#contact')">Ta kontakt</a>
       </contact>
       <navhint>
         <img src="img/arrow_down.svg">
@@ -21,17 +21,17 @@
       <nav>
         <ul>
           <li>
-            <a href="#crew">
+            <a onclick="smoothScroll('#crew')">
               <span>Folkene</span>
             </a>
           </li>
           <li>
-            <a href="#projects">
+            <a onclick="smoothScroll('#projects')">
               <span>Prosjekter</span>
             </a>
           </li>
           <li>
-            <a href="#"><span>Vi gjør</span></a>
+            <a href="#about"><span>Vi gjør</span></a>
             <ul class="dropdown">
               <li>
                 <a href="#research">
@@ -135,7 +135,7 @@
         <img src="img/logo.svg">
       </logo>
       <contact>
-        <a href="#contact">Ta kontakt</a>
+        <a onclick="smoothScroll('#contact')">Ta kontakt</a>
       </contact>
       <navhint>
         <img src="img/arrow_down.svg">
@@ -155,7 +155,7 @@
         <img src="img/logo.svg">
       </logo>
       <contact>
-        <a href="#contact">Ta kontakt</a>
+        <a onclick="smoothScroll('#contact')">Ta kontakt</a>
       </contact>
       <navhint>
         <img src="img/arrow_down.svg">
@@ -257,22 +257,22 @@
       <header>
         <h1>Prosjekter |</h1>
         <controls>
-          <svg id="expand" class="active" onclick="expandProjectCard()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126.67 93.63"><rect class="cls-1" x="2.27" y="56.49" width="47.52" height="34.86"/><rect class="cls-1" x="2.27" y="2.27" width="47.52" height="34.86"/><rect class="cls-1" x="76.88" y="2.27" width="47.52" height="34.86"/><rect class="cls-1" x="76.88" y="56.49" width="47.52" height="34.86"/></svg>
-          <svg id="collapse" onclick="collapseProjectCard()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 113.61 89.51"><line class="cls-1" x1="22.75" y1="2.27" x2="113.61" y2="2.27"/><line class="cls-1" x1="22.75" y1="44.75" x2="113.61" y2="44.75"/><line class="cls-1" x1="22.75" y1="87.23" x2="113.61" y2="87.23"/><line class="cls-1" y1="2.27" x2="11.26" y2="2.27"/><line class="cls-1" y1="44.75" x2="11.26" y2="44.75"/><line class="cls-1" y1="87.23" x2="11.26" y2="87.23"/></svg>
+          <svg id="expand" onclick="expandProjectCard()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 126.67 93.63"><rect class="cls-1" x="2.27" y="56.49" width="47.52" height="34.86"/><rect class="cls-1" x="2.27" y="2.27" width="47.52" height="34.86"/><rect class="cls-1" x="76.88" y="2.27" width="47.52" height="34.86"/><rect class="cls-1" x="76.88" y="56.49" width="47.52" height="34.86"/></svg>
+          <svg id="collapse" class="active" onclick="collapseProjectCard()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 113.61 89.51"><line class="cls-1" x1="22.75" y1="2.27" x2="113.61" y2="2.27"/><line class="cls-1" x1="22.75" y1="44.75" x2="113.61" y2="44.75"/><line class="cls-1" x1="22.75" y1="87.23" x2="113.61" y2="87.23"/><line class="cls-1" y1="2.27" x2="11.26" y2="2.27"/><line class="cls-1" y1="44.75" x2="11.26" y2="44.75"/><line class="cls-1" y1="87.23" x2="11.26" y2="87.23"/></svg>
         </controls>
       </header>
       <logo>
         <img src="img/logo.svg">
       </logo>
       <contact>
-        <a href="#contact">Ta kontakt</a>
+        <a onclick="smoothScroll('#contact')">Ta kontakt</a>
       </contact>
       <navhint>
         <img src="img/arrow_down.svg">
       </navhint>
 
       <grid>
-        <card>
+        <card class="collapsed">
           <fader>
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffriskus.com%2Fthemes%2FFriskus%2Fimages%2Ffriskus_opengraph.png&f=1&nofb=1">
             <detail>
@@ -282,7 +282,7 @@
           <h1>Friskus</h1>
           <span>Coworking space in the hearth of Bergen</span>
         </card>
-        <card>
+        <card class="collapsed">
           <fader>
             <img src="https://bergen.works/wp-content/uploads/2018/06/bwLogo.png">
             <detail>
@@ -292,7 +292,7 @@
           <h1>Bergen Works</h1>
           <span>Coworking space in the hearth of Bergen</span>
         </card>
-        <card>
+        <card class="collapsed">
           <fader>
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffriskus.com%2Fthemes%2FFriskus%2Fimages%2Ffriskus_opengraph.png&f=1&nofb=1">
             <detail>
@@ -302,7 +302,7 @@
           <h1>Friskus</h1>
           <span>Coworking space in the hearth of Bergen</span>
         </card>
-        <card>
+        <card class="collapsed">
           <fader>
             <img src="https://bergen.works/wp-content/uploads/2018/06/bwLogo.png">
             <detail>
@@ -336,19 +336,5 @@
       </footer>
     </section>
     <script src="script.js"></script>
-    <script>
-     function expandProjectCard() {
-       const cards = document.querySelectorAll('#projects card')
-       cards.forEach(c => c.classList.remove('collapsed'))
-       document.querySelector('svg#expand').classList.add('active')
-       document.querySelector('svg#collapse').classList.remove('active')
-     }
-     function collapseProjectCard() {
-       const cards = document.querySelectorAll('#projects card')
-       cards.forEach(c => c.classList.add('collapsed'))
-       document.querySelector('svg#expand').classList.remove('active')
-       document.querySelector('svg#collapse').classList.add('active')
-     }
-    </script>
   </body>
 </html>
