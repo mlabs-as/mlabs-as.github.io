@@ -43,7 +43,7 @@ section#about > header > h1 {
 
 section#about article {
   width: 34rem;
-  top: 65%;
+  top: 62%;
   left: 50%;
   font-size: 1.4rem;
 }
@@ -55,7 +55,7 @@ section#about > article:nth-of-type(1) {
 section#about article > img {
   position: absolute;
   top: 0;
-  left: -12rem;
+  left: -10rem;
   height: 6rem;
 }
 
