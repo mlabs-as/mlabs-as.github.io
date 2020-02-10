@@ -107,6 +107,12 @@ nav a {
   color: black;
 }
 
+nav > ul > li > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 nav a > span {
   position: relative;
 }
