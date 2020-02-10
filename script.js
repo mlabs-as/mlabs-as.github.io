@@ -60,21 +60,36 @@ function show(pageIndex) {
   })
 }
 
-function currentlyShowingSections() {
-  const sectionBounds = Array.from(document.querySelectorAll('section'))
-        .map(s => [s.offsetTop, s.offsetTop + s.offsetHeight])
-
+function currentBounds() {
   const {innerHeight, scrollY} = window
-  const currentBounds = [scrollY, scrollY + innerHeight]
+  return {
+    start:scrollY,
+    height: innerHeight,
+    end: scrollY + innerHeight,
+  }
+}
 
-  return sectionBounds.reduce((n, [lower, upper]) => {
-    const [start, end] = currentBounds;
+function sectionBounds() {
+  return Array.from(document.querySelectorAll('section'))
+    .map(s => ({
+      lower: s.offsetTop,
+      upper: s.offsetTop + s.offsetHeight,
+      elem:s,
+    }))
+}
 
-    if (end <= lower || upper <= start) {
-      return n
-    }
-    return n+1
-  }, 0)
+function sectionsShowing() {
+  const {start, end, height} = currentBounds()
+  const sections = sectionBounds()
+  return sectionBounds()
+    .reduce((agg, {lower, upper, elem}) => {
+      const first = Math.max(lower, start)
+      const second = Math.min(end, upper)
+      const clamped = Math.max(0, second - first)
+      const portion = clamped / height
+      return portion > 0 ?
+        agg.concat({ elem, portion }) : agg
+    }, [])
 }
 
 let isScrolling = null
@@ -89,18 +104,20 @@ window.addEventListener('scroll', event => {
       return
     }
 
-    const target = window.scrollY
-    const sections = Array.from(document.querySelectorAll('section'))
-    const closest = sections.reduce((a, b) =>
-                                    Math.abs(target - a.offsetTop) < Math.abs(target - b.offsetTop) ? a : b
-                                   )
+    const {height} = currentBounds()
+    const [first, second] = sectionsShowing()
 
-    //         window.location.hash = closest.id
-    if (currentlyShowingSections() > 1) {
-      window.scrollTo({
-        top: closest.offsetTop,
+    // Two sections currently showing
+    if (second) {
+      const arg = first.portion > second.portion ? {
+        // Bottom of first elem (could be larger than vh)
+        top: first.elem.offsetTop + first.elem.offsetHeight - height,
         behavior: 'smooth',
-      })
+      } :{
+        top: second.elem.offsetTop,
+        behavior: 'smooth',
+      }
+      window.scrollTo(arg)
     }
   }, 50)
 })
