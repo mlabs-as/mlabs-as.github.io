@@ -452,3 +452,104 @@ section#contact footer > h2 {
   font-size: 1rem;
   text-transform: uppercase;
 }
+
+
+
+/* TAG: INTRO ANIMATION */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideSmallPiece {
+  0% {
+    transform: scale(0.5) translateX(-49px);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(0.5) translateX(-49px);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(0.5) translateX(0);
+    opacity: 1;
+  }
+  95% {
+    transform: translate(-217px, -120px) scale(0.07);
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-217px, -120px) scale(0.07);
+    opacity: 0;
+  }
+}
+
+@keyframes slideLargePiece {
+  0% {
+    transform: scale(0.5) translateX(49px);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(0.5) translateX(49px);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(0.5) translateX(0);
+    opacity: 1;
+  }
+  95% {
+    transform: translate(-217px, -120px) scale(0.07);
+  }
+  98% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-217px, -120px) scale(0.07);
+    opacity: 0;
+  }
+}
+
+#intro {
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: 6s ease-in 0s fadeOut;
+  visibility: hidden;
+}
+#intro svg {
+  height: 100vh;
+  width: 100vw;
+}
+
+#intro svg .logo-small-piece {
+  fill: white;
+  stroke: white;
+  stroke-width: 1.21px;
+  animation: 6s ease-in 0s slideSmallPiece;
+  transform-origin: calc(381.82px / 2) calc(272.35px / 2);
+  opacity: 0;
+}
+#intro svg .logo-large-piece {
+  fill: white;
+  stroke: white;
+  stroke-width: 1.21px;
+  animation: 6s ease-in 0s slideLargePiece;
+  transform-origin: calc(381.82px / 2) calc(272.35px / 2);
+  opacity: 0;
+}
