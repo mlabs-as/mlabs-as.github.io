@@ -332,7 +332,7 @@ section#projects {
 /* TODO, these are same as section#crew header */
 section#projects > header > controls {
   justify-self: end;
-  padding-right: 20%;
+  padding-right: 10vw;
   display: flex;
   align-items: center;
   height: 100%;
