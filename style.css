@@ -369,6 +369,15 @@ section#projects card.collapsed img {
   overflow: hidden;
 }
 
+section#projects card h1,
+section#projects card span {
+  transition: padding 500ms ease;
+}
+section#projects card.collapsed:nth-child(even) h1,
+section#projects card.collapsed:nth-child(even) span {
+  padding-left: 0;
+}
+
 section#projects card > fader {
   max-height: 500px;
   transition: height 500ms ease;
