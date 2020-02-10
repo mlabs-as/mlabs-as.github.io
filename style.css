@@ -51,6 +51,7 @@ navhint {
 
 navhint > img {
   height: 5rem;
+  cursor: pointer;
 }
 
 /* TAG: CARD GRID */
@@ -175,6 +176,25 @@ nav a {
   text-decoration: none;
   color: black;
 }
+nav a svg {
+  padding-left: 3rem;
+  height: 1rem;
+  fill: none;
+  stroke: black;
+  stroke-width: 6.06px;
+}
+nav a svg line {
+  transform-origin: 45.43px 45.43px;
+  transition: transform 300ms ease;
+}
+
+nav ul.dropdown:hover ~ a svg line.vertical,
+nav a:hover svg line.vertical {
+  transform: rotate(90deg);
+}
+
+
+
 
 nav > ul > li > a {
   height: 100%;
