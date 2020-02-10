@@ -8,12 +8,12 @@
 
   </head>
   <body>
-    <section id="first">
+    <section id="about">
       <logo>
         <img src="img/logo.svg">
       </logo>
       <contact>
-        <a href="#">Ta kontakt</a>
+        <a href="#contact">Ta kontakt</a>
       </contact>
       <navhint>
         <img src="img/arrow_down.svg">
@@ -21,12 +21,12 @@
       <nav>
         <ul>
           <li>
-            <a href="#">
+            <a href="#crew">
               <span>Folkene</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#project">
               <span>Prosjekter</span>
             </a>
           </li>
@@ -129,12 +129,130 @@
         </p>
       </article>
     </section>
+
     <section id="second">
       <iframe src="https://www.youtube.com/embed/oytL881p-nQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
-    <section id="third" >
-      Section 3
+
+    <section id="crew">
+      <header>
+        <h1>Våre folk |</h1>
+        <p>
+          Støttet av et team av talentfulle mennesker med et mangfoldig sett med ferdigheter og bakgrunn, er vi godt rustet til å tilby innovative løsninger til et bredt spekter av bransjer.
+        </p>
+      </header>
+      <people>
+        <person>
+          <fader>
+            <img src="img/people/Henrik.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Henrik Stensig</h1>
+          <span>CEO</span>
+        </person>
+        <person>
+          <fader>
+            <img src="img/people/FredrikS.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Fredrik Saroea</h1>
+          <span>Creative Director</span>
+        </person>
+        <person>
+          <fader>
+            <img src="img/people/Cecilie.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Cecilie Kristiansen</h1>
+          <span>Design Lead</span>
+        </person>
+        <person>
+          <fader>
+            <img src="img/people/Peder.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Peder Refsnes</h1>
+          <span>Full Stack Developer</span>
+        </person>
+        <person>
+          <fader>
+            <img src="img/people/Sina.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Sina Erichsen</h1>
+          <span>Researcher</span>
+        </person>
+        <person>
+          <fader>
+            <img src="img/people/Elise.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Elise Meistad</h1>
+          <span>Illustrator/Trainee</span>
+        </person>
+        <person>
+          <fader>
+            <img src="img/people/Reuel.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Reuel</h1>
+          <span>TITTLE?</span>
+        </person>
+        <person>
+          <fader>
+            <img src="img/people/Felipe.jpg">
+            <detail>
+              <span>henrik@mlabs.no</span>
+              <span>458 67 985</span>
+            </detail>
+          </fader>
+          <h1>Felipe</h1>
+          <span>TITTLE?</span>
+        </person>
     </section>
+
+    <section id="contact" >
+      <header>
+        <h1>Fristet til innovasjon?</h1>
+        <h1>Vi er klar! Bare gi en lyd.</h1>
+        <img src="img/arrow_down.svg">
+      </header>
+      <footer>
+          <h2>Finn oss:</h2>
+          <span>Starvhusgaten 2A</span>
+          <span>5014, Bergen</span>
+
+          <h2>Gi en lyd:</h2>
+          <span>+47 458 67 985</span>
+          <span>hello@mlabs.no</span>
+
+          <h2>Følg oss:</h2>
+          <span>Instagram</span>
+          <span>Facebook</span>
+      </footer>
+    </section>
+
     <script>
      const pageMapping = {
        '#research': 1,
@@ -149,8 +267,8 @@
      const {styler, spring, value, transform, stagger} = popmotion
 
      const offsets = [0, 100, 200, 300, 400, 500]
-     const headers = Array.from(document.querySelectorAll('#first header'))
-     const paragraphs = document.querySelectorAll('#first article')
+     const headers = Array.from(document.querySelectorAll('#about header'))
+     const paragraphs = document.querySelectorAll('#about article')
 
      const setters = offsets.map((offset, i) => {
        return [
@@ -220,11 +338,11 @@
            Math.abs(target - elemMiddle(a)) < Math.abs(target - elemMiddle(b)) ? a : b
          )
 
-         window.scrollTo({
-           top: closest.offsetTop,
-           behavior: 'smooth',
-         })
-       }, 50)
+         /* window.scrollTo({
+          *   top: closest.offsetTop,
+          *   behavior: 'smooth',
+          * })
+            }, 50) */
      })
 
     </script>
