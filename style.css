@@ -60,12 +60,6 @@ grid {
   margin: 5rem 0;
 }
 
-grid > card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 5%;
-}
-
 grid > card:nth-child(odd) {
   justify-self: end;
 }
@@ -74,10 +68,29 @@ grid > card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 80%;
+  width: 100%;
+}
+
+grid > card:nth-child(odd) {
+  padding-left: 10vw;
 }
 grid > card:nth-child(even) {
   margin-top: 25%;
+  padding-right: 10vw;
+}
+
+
+grid > card > h1 {
+  margin-top: 1rem;
+  font-weight: lighter;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+grid > card > h1,
+grid > card > span {
+  padding-top: 0.5rem;
+  padding-left: 4rem;
 }
 
 grid > card > fader {
@@ -91,7 +104,6 @@ grid > card > fader > detail {
   width: 100%;
   height: 100%;
 }
-
 grid > card > fader > detail {
   display: flex;
   flex-direction: column;
@@ -100,6 +112,8 @@ grid > card > fader > detail {
   background-color: #efd4a9;
   top: 0;
   left: 0;
+  height: 100%;
+  width: 100%;
   opacity: 0;
   transition: opacity 300ms ease;
 }
@@ -107,20 +121,6 @@ grid > card > fader > detail {
 grid > card > fader > detail:hover {
   opacity: 1;
 }
-
-grid > card > h1 {
-  margin-top: 1rem;
-  font-weight: lighter;
-  font-size: 1rem;
-  text-transform: uppercase;
-}
-
-grid > card > h1,
-grid > card > span {
-  padding-top: 0.5rem;
-  padding-left: 3rem;
-}
-
 
 /* TAG: FIRST SECTION (ABOUT)*/
 section#about {
@@ -261,21 +261,17 @@ ul.dropdown:hover {
 
 /* TAG: SECOND SECTION (VIDEO) */
 section#fullscreenvideo {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 25px;
-  overflow:hidden;
-  background-color: black;
+  background-color: #efd4a9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 section#fullscreenvideo iframe,
 section#fullscreenvideo object,
 section#fullscreenvideo embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 70vw;
+  height: calc(70vw * 0.5625);
 }
 /* TAG: THIRD SECTION (CREW) */
 section#crew {
@@ -286,13 +282,13 @@ section#crew > header,
 section#projects > header {
   padding-top: 8rem;
   display: grid;
-  grid-template-columns: 1.7fr 2fr;
+  grid-template-columns: 1.3fr 2fr;
   grid-gap: 4rem;
 }
 
 section#crew > header > h1,
 section#projects > header > h1 {
-  justify-self: end;
+  padding-left: calc(10vw + 4rem);
   text-transform: uppercase;
   font-size: 3rem;
   font-weight: lighter;
