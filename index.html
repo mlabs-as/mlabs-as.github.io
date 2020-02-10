@@ -358,7 +358,6 @@
 
 //         window.location.hash = closest.id
          if (currentlyShowingSections() > 1) {
-           console.log('scrolling to', closest.id)
            window.scrollTo({
              top: closest.offsetTop,
              behavior: 'smooth',
@@ -370,7 +369,6 @@
     </script>
     <script>
      function pageFromUrl() {
-       console.log('hashChange!')
        const page = pageMapping[window.location.hash] || 0
        show(page)
      }
